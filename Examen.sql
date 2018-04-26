@@ -32,18 +32,17 @@ SELECT function_1(1,2,3) FROM DUAL
 CREATE OR REPLACE FUNCTION function_2(n IN NUMBER)
 RETURN number IS
   first number:=1;
-  second number:=1;
+  second number:=2;
   third number;
-  --m number:=&m;
   i number;
   fib number;
 BEGIN
   dbms_output.put_line('Fibonacci series is:');
   dbms_output.put_line(first);
-  dbms_output.put_line(second);
+  dbms_output.put_line(second-1);
   
   FOR i IN 2..n LOOP
-    third:=first+(second+1);
+    third:=first+(second+2);
     first:=second;
     second:=third;
     dbms_output.put_line(third);
@@ -52,5 +51,7 @@ BEGIN
   RETURN fib;
 END;
 
-SELECT function_2(6) FROM DUAL
+BEGIN
+  dbms_output.put_line(function_2(6));
+END;
 
